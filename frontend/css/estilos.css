@@ -134,6 +134,35 @@ body {
     text-decoration: underline;
 }
 
+.popup-laguna-santafe .leaflet-popup-content-wrapper {
+    background: #c46b3c;
+    color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(196, 107, 60, 0.35);
+}
+
+.popup-laguna-santafe .leaflet-popup-content {
+    margin: 10px 12px;
+    color: #ffffff;
+}
+
+.popup-laguna-santafe .leaflet-popup-tip {
+    background: #c46b3c;
+}
+
+.popup-laguna-santafe a.leaflet-popup-close-button {
+    color: #ffffff;
+}
+
+.popup-laguna-santafe .popup-laguna-content {
+    color: #ffffff;
+}
+
+.popup-laguna-santafe .popup-laguna-content strong,
+.popup-laguna-santafe .popup-laguna-content b {
+    color: #ffffff;
+}
+
 @media (max-width: 600px) {
     .sidebar {
         width: 235px;

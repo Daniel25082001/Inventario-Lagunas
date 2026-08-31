@@ -60,9 +60,9 @@ const capas = [
         id: "buenosAires",
         nombre: "Buenos Aires",
         archivo: "data/buenos aires.geojson",
-        color: "#e0c06b",
+        color: "#63966e",
         estilo: {
-            color: "#e0c06b",
+            color: "#63966e",
             weight: 2,
             fillOpacity: 0
         }
@@ -79,14 +79,14 @@ const capas = [
         }
     },
     {
-        id: "lagunas",
-        nombre: "Lagunas",
-        archivo: "data/lagunas.geojson",
-        color: "#4fe3f7",
+        id: "lagunas-santafe",
+        nombre: "Lagunas Santa Fe",
+        archivo: "data/lagunas-santafe.geojson",
+        color: "#c46b3c",
         estilo: {
-            color: "#4fe3f7",
+            color: "#c46b3c",
             weight: 1,
-            fillColor: "#4fe3f7",
+            fillColor: "#c46b3c ",
             fillOpacity: 0.7
         }
     }
@@ -165,11 +165,16 @@ function cargarCapa(capa) {
                 onEachFeature: function (feature, layerItem) {
                     if (feature.properties) {
                         const codigo = feature.properties.field_2 || "Sin código";
+                        const popupOptions = capa.id === "lagunas-santafe"
+                            ? { className: "popup-laguna-santafe" }
+                            : {};
 
                         layerItem.bindPopup(`
-                            <strong>${capa.nombre}</strong><br>
-                            <b>Código:</b> ${codigo}
-                        `);
+                            <div class="popup-laguna-content">
+                                <strong>${capa.nombre}</strong><br>
+                                <b>Código:</b> ${codigo}
+                            </div>
+                        `, popupOptions);
                     }
                 }
             });
