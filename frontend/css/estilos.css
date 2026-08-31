@@ -134,32 +134,111 @@ body {
     text-decoration: underline;
 }
 
-.popup-laguna-santafe .leaflet-popup-content-wrapper {
+.popup-cordoba .leaflet-popup-content-wrapper,
+.popup-lagunas-cordoba .leaflet-popup-content-wrapper {
+    background: #6b5238;
+    color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(107, 82, 56, 0.35);
+}
+
+.popup-cordoba .leaflet-popup-content,
+.popup-lagunas-cordoba .leaflet-popup-content {
+    margin: 10px 12px;
+    color: #ffffff;
+}
+
+.popup-cordoba .leaflet-popup-tip,
+.popup-lagunas-cordoba .leaflet-popup-tip {
+    background: #6b5238;
+}
+
+.popup-cordoba a.leaflet-popup-close-button,
+.popup-lagunas-cordoba a.leaflet-popup-close-button {
+    color: #ffffff;
+}
+
+.popup-cordoba .popup-content,
+.popup-lagunas-cordoba .popup-content {
+    color: #ffffff;
+}
+
+.popup-cordoba .popup-content strong,
+.popup-cordoba .popup-content b,
+.popup-lagunas-cordoba .popup-content strong,
+.popup-lagunas-cordoba .popup-content b {
+    color: #ffffff;
+}
+
+.popup-buenosaires .leaflet-popup-content-wrapper,
+.popup-lagunas-buenosaires .leaflet-popup-content-wrapper {
+    background: #63966e;
+    color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(99, 150, 110, 0.35);
+}
+
+.popup-buenosaires .leaflet-popup-content,
+.popup-lagunas-buenosaires .leaflet-popup-content {
+    margin: 10px 12px;
+    color: #ffffff;
+}
+
+.popup-buenosaires .leaflet-popup-tip,
+.popup-lagunas-buenosaires .leaflet-popup-tip {
+    background: #63966e;
+}
+
+.popup-buenosaires a.leaflet-popup-close-button,
+.popup-lagunas-buenosaires a.leaflet-popup-close-button {
+    color: #ffffff;
+}
+
+.popup-buenosaires .popup-content,
+.popup-lagunas-buenosaires .popup-content {
+    color: #ffffff;
+}
+
+.popup-buenosaires .popup-content strong,
+.popup-buenosaires .popup-content b,
+.popup-lagunas-buenosaires .popup-content strong,
+.popup-lagunas-buenosaires .popup-content b {
+    color: #ffffff;
+}
+
+.popup-santafe .leaflet-popup-content-wrapper,
+.popup-lagunas-santafe .leaflet-popup-content-wrapper {
     background: #c46b3c;
     color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(196, 107, 60, 0.35);
 }
 
-.popup-laguna-santafe .leaflet-popup-content {
+.popup-santafe .leaflet-popup-content,
+.popup-lagunas-santafe .leaflet-popup-content {
     margin: 10px 12px;
     color: #ffffff;
 }
 
-.popup-laguna-santafe .leaflet-popup-tip {
+.popup-santafe .leaflet-popup-tip,
+.popup-lagunas-santafe .leaflet-popup-tip {
     background: #c46b3c;
 }
 
-.popup-laguna-santafe a.leaflet-popup-close-button {
+.popup-santafe a.leaflet-popup-close-button,
+.popup-lagunas-santafe a.leaflet-popup-close-button {
     color: #ffffff;
 }
 
-.popup-laguna-santafe .popup-laguna-content {
+.popup-santafe .popup-content,
+.popup-lagunas-santafe .popup-content {
     color: #ffffff;
 }
 
-.popup-laguna-santafe .popup-laguna-content strong,
-.popup-laguna-santafe .popup-laguna-content b {
+.popup-santafe .popup-content strong,
+.popup-santafe .popup-content b,
+.popup-lagunas-santafe .popup-content strong,
+.popup-lagunas-santafe .popup-content b {
     color: #ffffff;
 }
 

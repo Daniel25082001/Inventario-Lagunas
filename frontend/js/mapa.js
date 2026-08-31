@@ -78,6 +78,32 @@ const capas = [
             fillOpacity: 0
         }
     },
+
+     {
+        id: "lagunas-cordoba",
+        nombre: "Lagunas Córdoba",
+        archivo: "data/lagunas-cordoba.geojson",
+        color: "#6b5238",
+        estilo: {
+            color: "#6b5238",
+            weight: 1,
+            fillColor: "#6b5238 ",
+            fillOpacity: 0.7
+        }
+    },
+
+     {
+        id: "lagunas-buenosaires",
+        nombre: "Lagunas Buenos Aires",
+        archivo: "data/lagunas-buenosaires.geojson",
+        color: "#63966e",
+        estilo: {
+            color: "#63966e",
+            weight: 1,
+            fillColor: "#63966e ",
+            fillOpacity: 0.7
+        }
+    },
     {
         id: "lagunas-santafe",
         nombre: "Lagunas Santa Fe",
@@ -90,10 +116,26 @@ const capas = [
             fillOpacity: 0.7
         }
     }
+
+    
 ];
 
 const capasCargadas = {};
 const listadoCapas = document.getElementById("layer-list");
+
+const popupClassByCapa = {
+    "Córdoba": "popup-cordoba",
+    "buenosAires": "popup-buenosaires",
+    "santaFe": "popup-santafe",
+    "lagunas-cordoba": "popup-lagunas-cordoba",
+    "lagunas-buenosaires": "popup-lagunas-buenosaires",
+    "lagunas-santafe": "popup-lagunas-santafe"
+};
+
+function getPopupOptions(capaId) {
+    const popupClass = popupClassByCapa[capaId];
+    return popupClass ? { className: popupClass } : {};
+}
 
 function ajustarVista(capaPrioritaria = null) {
     if (capaPrioritaria) {
@@ -165,12 +207,10 @@ function cargarCapa(capa) {
                 onEachFeature: function (feature, layerItem) {
                     if (feature.properties) {
                         const codigo = feature.properties.field_2 || "Sin código";
-                        const popupOptions = capa.id === "lagunas-santafe"
-                            ? { className: "popup-laguna-santafe" }
-                            : {};
+                        const popupOptions = getPopupOptions(capa.id);
 
                         layerItem.bindPopup(`
-                            <div class="popup-laguna-content">
+                            <div class="popup-content">
                                 <strong>${capa.nombre}</strong><br>
                                 <b>Código:</b> ${codigo}
                             </div>
