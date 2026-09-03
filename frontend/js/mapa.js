@@ -8,13 +8,6 @@ const mapa = L.map("map", { zoomControl: false }).setView([-34.8754,-60.4774], 7
 // Capas Base
 // ===============================
 
-const osm = L.tileLayer(
-    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    {
-        attribution: "&copy; OpenStreetMap"
-    }
-);
-
 const satelite = L.tileLayer(
     "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
     {
@@ -36,9 +29,8 @@ ign.addTo(mapa);
 L.control.scale({ position: "bottomleft" }).addTo(mapa);
 
 const mapasBase = {
-    "OpenStreetMap": osm,
-    "Satélite": satelite,
-    "IGN Argentina": ign
+    "Google Satélite": satelite,
+    "Argenmap": ign
 };
 
 L.control.layers(mapasBase, null, { position: "topright" }).addTo(mapa);
@@ -47,7 +39,7 @@ L.control.zoom({ position: "topright" }).addTo(mapa);
 const capas = [
     {
         id: "Córdoba",
-        nombre: "Córdoba",
+        nombre: "Pcia. de Córdoba",
         archivo: "data/Cordoba.geojson",
         color: "#6b5238",
         estilo: {
@@ -58,7 +50,7 @@ const capas = [
     },
     {
         id: "buenosAires",
-        nombre: "Buenos Aires",
+        nombre: "Pcia. de Buenos Aires",
         archivo: "data/buenos aires.geojson",
         color: "#63966e",
         estilo: {
@@ -69,7 +61,7 @@ const capas = [
     },
     {
         id: "santaFe",
-        nombre: "Santa Fe",
+        nombre: "Pcia. de Santa Fe",
         archivo: "data/santa fe.geojson",
         color: "#c46b3c",
         estilo: {
@@ -81,7 +73,7 @@ const capas = [
 
      {
         id: "lagunas-cordoba",
-        nombre: "Lagunas Córdoba",
+        nombre: "Lagunas de Córdoba",
         archivo: "data/lagunas-cordoba.geojson",
         color: "#6b5238",
         estilo: {
@@ -94,7 +86,7 @@ const capas = [
 
      {
         id: "lagunas-buenosaires",
-        nombre: "Lagunas Buenos Aires",
+        nombre: "Lagunas de Buenos Aires",
         archivo: "data/lagunas-buenosaires.geojson",
         color: "#63966e",
         estilo: {
@@ -106,7 +98,7 @@ const capas = [
     },
     {
         id: "lagunas-santafe",
-        nombre: "Lagunas Santa Fe",
+        nombre: "Lagunas de Santa Fe",
         archivo: "data/lagunas-santafe.geojson",
         color: "#c46b3c",
         estilo: {
