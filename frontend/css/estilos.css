@@ -54,13 +54,16 @@ body.panel-open .panel-toggle { left: calc(var(--panel) + 1rem); }
 .instagram-link:hover, .instagram-link:focus-visible { color: #c13584; text-decoration: underline; }
 .leaflet-bottom .leaflet-control-scale { margin-left: calc(var(--panel) + 5px); }
 
-:is(.popup-cordoba, .popup-lagunas-cordoba) { --popup-color: #6b5238; }
+:is(.popup-cordoba, .popup-lagunas-cordoba) { --popup-color: #000000; }
 :is(.popup-buenosaires, .popup-lagunas-buenosaires) { --popup-color: #63966e; }
 :is(.popup-santafe, .popup-lagunas-santafe) { --popup-color: #c46b3c; }
 :is(.popup-cordoba, .popup-lagunas-cordoba, .popup-buenosaires, .popup-lagunas-buenosaires, .popup-santafe, .popup-lagunas-santafe) .leaflet-popup-content-wrapper { color: #fff; background: var(--popup-color); border-radius: 8px; }
 :is(.popup-cordoba, .popup-lagunas-cordoba, .popup-buenosaires, .popup-lagunas-buenosaires, .popup-santafe, .popup-lagunas-santafe) .leaflet-popup-content { margin: 10px 12px; color: #fff; }
 :is(.popup-cordoba, .popup-lagunas-cordoba, .popup-buenosaires, .popup-lagunas-buenosaires, .popup-santafe, .popup-lagunas-santafe) .leaflet-popup-tip { background: var(--popup-color); }
 :is(.popup-cordoba, .popup-lagunas-cordoba, .popup-buenosaires, .popup-lagunas-buenosaires, .popup-santafe, .popup-lagunas-santafe) :is(a.leaflet-popup-close-button, .popup-content, .popup-content strong, .popup-content b) { color: #fff; }
+:is(.popup-cordoba, .popup-lagunas-cordoba, .popup-buenosaires, .popup-lagunas-buenosaires, .popup-santafe, .popup-lagunas-santafe) .leaflet-popup-close-button {
+    width: 0px; height: 0px; font-size: 0px; line-height: 0px;
+}
 
 @media (max-width: 600px) {
     :root { --panel: 235px; }

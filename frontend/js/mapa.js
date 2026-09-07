@@ -41,9 +41,9 @@ const capas = [
         id: "Córdoba",
         nombre: "Pcia. de Córdoba",
         archivo: "data/Cordoba.geojson",
-        color: "#6b5238",
+        color: "#000000",
         estilo: {
-            color: "#6b5238",
+            color: "#000000",
             weight: 2,
             fillOpacity: 0
         }
@@ -75,11 +75,11 @@ const capas = [
         id: "lagunas-cordoba",
         nombre: "Lagunas de Córdoba",
         archivo: "data/lagunas-cordoba.geojson",
-        color: "#6b5238",
+        color: "#000000",
         estilo: {
-            color: "#6b5238",
+            color: "#000000",
             weight: 1,
-            fillColor: "#6b5238 ",
+            fillColor: "#000000 ",
             fillOpacity: 0.7
         }
     },
@@ -204,6 +204,35 @@ function crearPanelCapas() {
     });
 }
 
+function crearIconoLaguna() {
+    const escala = Math.min(2.35, 1 + Math.max(0, mapa.getZoom() - 7) * 0.23);
+    const ancho = Math.round(7 * escala);
+    const alto = Math.round(12 * escala);
+
+    return new L.Icon.Default({
+        iconSize: [ancho, alto],
+        iconAnchor: [Math.round(ancho / 2), alto],
+        popupAnchor: [0, -alto],
+        shadowUrl: null,
+        shadowSize: null,
+        shadowAnchor: null
+    });
+}
+
+function actualizarIconosLagunas() {
+    const icono = crearIconoLaguna();
+
+    Object.values(capasCargadas).forEach(capa => {
+        capa.layer.eachLayer(layer => {
+            if (layer instanceof L.Marker) {
+                layer.setIcon(icono);
+            }
+        });
+    });
+}
+
+mapa.on("zoomend", actualizarIconosLagunas);
+
 function cargarCapa(capa) {
     fetch(capa.archivo)
         .then(response => response.json())
@@ -219,6 +248,9 @@ function cargarCapa(capa) {
 
             const layer = L.geoJSON(datosCapa, {
                 style: capa.estilo,
+                pointToLayer: function (feature, latlng) {
+                    return L.marker(latlng, { icon: crearIconoLaguna() });
+                },
                 onEachFeature: function (feature, layerItem) {
                     if (feature.properties) {
                         const codigo = feature.properties.field_2 || "Sin código";
