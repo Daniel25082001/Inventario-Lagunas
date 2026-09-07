@@ -114,6 +114,29 @@ const capas = [
 
 const capasCargadas = {};
 const listadoCapas = document.getElementById("layer-list");
+const panel = document.getElementById("layers-panel");
+const panelToggle = document.getElementById("panel-toggle");
+
+function actualizarPanel(isOpen) {
+    panel.classList.toggle("is-open", isOpen);
+    document.body.classList.toggle("panel-open", isOpen);
+    panelToggle.setAttribute("aria-expanded", String(isOpen));
+    panelToggle.textContent = isOpen ? "Ocultar capas" : "Mostrar capas";
+}
+
+const panelAbiertoInicialmente = !window.matchMedia("(max-width: 600px)").matches;
+actualizarPanel(panelAbiertoInicialmente);
+
+panelToggle.addEventListener("click", () => {
+    actualizarPanel(!panel.classList.contains("is-open"));
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && panel.classList.contains("is-open")) {
+        actualizarPanel(false);
+        panelToggle.focus();
+    }
+});
 
 const popupClassByCapa = {
     "Córdoba": "popup-cordoba",
