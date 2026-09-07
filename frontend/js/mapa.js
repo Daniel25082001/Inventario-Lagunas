@@ -121,7 +121,7 @@ function actualizarPanel(isOpen) {
     panel.classList.toggle("is-open", isOpen);
     document.body.classList.toggle("panel-open", isOpen);
     panelToggle.setAttribute("aria-expanded", String(isOpen));
-    panelToggle.textContent = isOpen ? "Ocultar capas" : "Mostrar capas";
+    panelToggle.textContent = isOpen ? "Ocultar Lagunas" : "Mostrar Lagunas";
 }
 
 const panelAbiertoInicialmente = !window.matchMedia("(max-width: 600px)").matches;

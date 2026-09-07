@@ -15,15 +15,18 @@ body { overflow: hidden; color: var(--ink); font-family: "Segoe UI", Tahoma, san
     padding: 1.35rem 1rem 170px; overflow-y: auto;
     background: rgba(248, 250, 252, .82); border-right: 1px solid #fff;
     box-shadow: 5px 0 24px rgba(15, 23, 42, .18); backdrop-filter: blur(16px);
+    transform: translateX(0); transition: transform .25s ease;
 }
+.sidebar:not(.is-open) { transform: translateX(calc(-100% - 12px)); }
 
 .panel-toggle {
-    position: fixed; top: 1rem; left: calc(var(--panel) + 1rem); z-index: 1100;
+    position: fixed; top: 1rem; left: 1rem; z-index: 1100;
     min-width: 72px; padding: .6rem .85rem; cursor: pointer;
     color: #fff; font: inherit; font-size: .86rem; font-weight: 700;
     background: #1f2937; border: 1px solid #ffffff66; border-radius: 6px;
     box-shadow: 0 3px 10px rgba(15, 23, 42, .24);
 }
+body.panel-open .panel-toggle { left: calc(var(--panel) + 1rem); }
 .panel-toggle:hover, .panel-toggle:focus-visible { background: #334155; }
 
 .sidebar h1 { margin: 0 0 1.15rem; font-size: 1.5rem; letter-spacing: .02em; }
@@ -63,12 +66,7 @@ body { overflow: hidden; color: var(--ink); font-family: "Segoe UI", Tahoma, san
     :root { --panel: 235px; }
     .sidebar {
         padding: 1rem .75rem 150px;
-        transform: translateX(calc(-100% - 12px));
-        transition: transform .25s ease;
     }
-    .sidebar.is-open { transform: translateX(0); }
-    .panel-toggle { left: 1rem; }
-    body.panel-open .panel-toggle { left: calc(var(--panel) + 1rem); }
     .project-logo { right: .75rem; bottom: .75rem; left: .75rem; }
 }
 
