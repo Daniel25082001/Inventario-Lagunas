@@ -2,16 +2,23 @@
 // Crear el mapa
 // ===============================
 
-const mapa = L.map("map", { zoomControl: false }).setView([-34.8754,-60.4774], 7);
+const mapa = L.map("map", { 
+    zoomControl: false,
+    minZoom: 7, // Nivel mínimo de zoom (no se puede alejar más del zoom 7)
+    maxZoom: 19 // Nivel máximo de zoom (puede acercarse hasta zoom 19)
+}).setView([-34.3, -62.33], 7); // Centro aproximado del área y zoom 7
 
 // ===============================
 // Capas Base
 // ===============================
 
-const satelite = L.tileLayer(
-    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+const hibrido = L.tileLayer(
+    "https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
     {
-        attribution: "Esri"
+        maxZoom: 20,
+        minZoom: 7,
+        attribution: "Google",
+        crossOrigin: "anonymous"
     }
 );
 
@@ -24,13 +31,21 @@ const ign = L.tileLayer(
     }
 );
 
-ign.addTo(mapa);
+const satelite = L.tileLayer(
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    {
+        attribution: "Esri"
+    }
+);
+
+hibrido.addTo(mapa);
 
 L.control.scale({ position: "bottomleft" }).addTo(mapa);
 
 const mapasBase = {
-    "Google Satélite": satelite,
-    "Argenmap": ign
+    "Google Hybrid": hibrido,
+    "Argenmap": ign,
+    "Google Satélite": satelite
 };
 
 L.control.layers(mapasBase, null, { position: "topright" }).addTo(mapa);
@@ -196,8 +211,6 @@ function crearPanelCapas() {
             } else {
                 mapa.removeLayer(info.layer);
             }
-
-            ajustarVista();
         });
 
         listadoCapas.appendChild(item);
